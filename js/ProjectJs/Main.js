@@ -42,7 +42,7 @@ function ProductGetter ()
     Drop() ;
     create () ;
     var Products = new XMLHttpRequest () ; 
-    Products.open("POST","http://test.w34.co/json/",true); 
+    Products.open("POST","http://188.166.81.130/staging/public/stores.json",true); 
     Products.onreadystatechange = function () 
     {
         if (this.readyState == 4 && this.status == 200)
@@ -55,21 +55,22 @@ function ProductGetter ()
             var LoopIterations = ListOfProducts.length ;
             for (var i = 0; i < LoopIterations; i++)
              {
-                insert (ListOfProducts[i].name , ListOfProducts[i].description , ListOfProducts[i].images , ListOfProducts[i].price, NoPieces);
+                insert (ListOfProducts[i].StoreName , ListOfProducts[i].StoreDescription , ListOfProducts[i].StoreLogo , ListOfProducts[i].StoreName, NoPieces);
                 if (LineSeprator % 4 == 0  ) {
+                    
                     product_one[0].innerHTML += "<div class='clearfix'></div>";
                     product_one[0].innerHTML += "<br>" + "<br>";
                 }
                 product_one[0].innerHTML += " <div class='col-md-3 product-left'> \
-                      <div class='product-main simpleCart_shelfItem'>" + "<a onclick='Redirect(\""+ ListOfProducts[i].name +"\")' class='mask'>\
-                      <img class='img-responsive zoom-img'' src= "+ ListOfProducts[i].images + "  alt="+ListOfProducts[i].name+"/>\
-                      </a>"+ "<div class='product-bottom'>" + "<h3>"+ ListOfProducts[i].name +"</h3>" + "<p> "+ ListOfProducts[i].description +" </p>\
-                      "+"<h4><a class='item_add' href='#'><i></i></a> <span id='p"+ListOfProducts[i].name+"'>"+ ListOfProducts[i].price +"</span\
+                      <div class='product-main simpleCart_shelfItem'>" + "<a onclick='Redirect(\""+ ListOfProducts[i].StoreName +"\")' class='mask'>\
+                      <img class='img-responsive zoom-img'' src= "+ ListOfProducts[i].StoreLogo + "  alt="+ListOfProducts[i].StoreName+"/>\
+                      </a>"+ "<div class='product-bottom'>" + "<h3>"+ ListOfProducts[i].StoreName +"</h3>" + "<p> "+ ListOfProducts[i].StoreDescription +" </p>\
+                      "+"<h4><a class='item_add' href='#'><i></i></a> <span id='p"+ListOfProducts[i].StoreName+"'>"+ ListOfProducts[i].StoreName +"</span\
                       class ='item_price'><span>$</span>\
                       </h4>"+"<p style ='color : "+ListOfProducts[i].color+"'> Avialable Color </p>\
-                      "+"<input id ='MYOWNBTN' onclick='AddToCart(\""+ListOfProducts[i].name+"\")' type='button'' value='A'>\
-                      "+"<input disabled style = ' text-align: center '  id ='"+ListOfProducts[i].name+"' type='text' value='0'>\
-                      "+"<input id ='MYOWNBTN1' onclick='RemoveFromCart(\""+ListOfProducts[i].name+"\")' type='button' value='R'>"+ "</div>"+"</div> </div> ";
+                      "+"<input id ='MYOWNBTN' onclick='AddToCart(\""+ListOfProducts[i].StoreName+"\")' type='button'' value='A'>\
+                      "+"<input disabled style = ' text-align: center '  id ='"+ListOfProducts[i].StoreName+"' type='text' value='0'>\
+                      "+"<input id ='MYOWNBTN1' onclick='RemoveFromCart(\""+ListOfProducts[i].StoreName+"\")' type='button' value='R'>"+ "</div>"+"</div> </div> ";
                       LineSeprator++ ;      
             }  
         }

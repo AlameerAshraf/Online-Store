@@ -19,6 +19,8 @@ var Im = document.getElementsByClassName("thumb-image");
 var Det = document.getElementsByClassName("col-md-7 single-top-right");
 
 var select = function (Product_Name) {
+    console.log(Product_Name);
+
     db.transaction(function (tx) {
         tx.executeSql("SELECT * FROM ST23 WHERE Product_Name = ? ", [Product_Name], function (tx, results) {
             if (results.rows.length > 0) {
@@ -26,24 +28,23 @@ var select = function (Product_Name) {
                 Det[0].innerHTML += "<div class = 'col-md-7 single-top-right'>\
                 <div class ='single-para simpleCart_shelfItem'>" + "<h2>" + results.rows.item(0).Product_Name + "</h2>"
                     + " <div class = 'star-on'> <div class='clearfix'>" + "</div> </div>"
-                    + "<h5 id='p"+ results.rows.item(0).Product_Name +"' class = 'item_price'>" + results.rows.item(0).price + "$" + "</h5>"
+                    + "<h5 id='p" + results.rows.item(0).Product_Name + "' class = 'item_price'>" + results.rows.item(0).price + "$" + "</h5>"
                     + "<p>" + results.rows.item(0).description + "<div class = 'available'>"
                     + " <ul> " + " <li> <p style='color : red ;' > Avilable Color <p> " + " </li> "
                     + " <div class = 'clearfix'> </div> " + " </ul> " + " </div> "
-                    + " <a  onclick='AddItemToCart(\""+results.rows.item(0).Product_Name+"\")' class = 'add-cart item_add' > Add To Cart </a> " + "</div> </div>";
+                    + " <a  onclick='AddItemToCart(\"" + results.rows.item(0).Product_Name + "\")' class = 'add-cart item_add' > Add To Cart </a> " + "</div> </div>";
             }
         });
     });
 }
-var CartContains = sessionStorage.getItem('Cart') ;
+var CartContains = sessionStorage.getItem('Cart');
 function LoadProductDetails() {
-     document.getElementById("Cart").innerText = CartContains ;
+    document.getElementById("Cart").innerText = CartContains;
     select(HNameOfProduct);
-}    
+}
 
-function  AddItemToCart (name) 
-{
-    document.getElementById("Cart").innerText = (parseFloat(document.getElementById('p'+name).innerHTML) + parseFloat (document.getElementById("Cart").innerText)).toFixed(2) ;
+function AddItemToCart(name) {
+    document.getElementById("Cart").innerText = (parseFloat(document.getElementById('p' + name).innerHTML) + parseFloat(document.getElementById("Cart").innerText)).toFixed(2);
 }
 
 
