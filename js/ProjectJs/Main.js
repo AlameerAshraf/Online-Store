@@ -126,22 +126,6 @@ function Buy ()
 
 
 
-// var create = function() {
-//     db.transaction(function (tx) {
-//         tx.executeSql("CREATE TABLE IF NOT EXISTS Product (id integer primary key , Product_Name text  description text , image text ,  price text)");
-//     });
-// }
-
-// var insert = function(Product_Name , description , image , price ) {
-//     db.transaction(function (tx) {
-//         console.log(image) ;
-//         tx.executeSql("INSERT INTO Product (Product_Name , description , image , price) VALUES (?,?,?,?)", [Product_Name, description ,image ,price ]);
-//     });
-// }
-
-
-
-
 
 
 
